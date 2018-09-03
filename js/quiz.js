@@ -1,31 +1,48 @@
 var pos = 0,
   quiz,
-  quiz_status,
+  quizStatus,
   question,
   choice,
   choices,
   chA,
   chB,
   chC,
+  chD,
+  chE,
   correct = 0;
-function playAudio() {
-  var x = document.getElementById("myAudio");
-  x.play();
+// function playAudio() {
+//   var x = document.getElementById("myAudio");
+//   x.play();
+// }
+// function pauseAudio() {
+//   var x = document.getElementById("myAudio");
+//   x.pause();
+// }
+var isPlaying = false;
+function togglePlay() {
+  var myAudio = document.getElementById("myAudio");
+
+  if (isPlaying) {
+    myAudio.pause();
+    isPlaying = false;
+    document.getElementById("playAudio").innerHTML = "PAUSE";
+  } else {
+    myAudio.play();
+    isPlaying = true;
+    document.getElementById("playAudio").innerHTML = "PLAY";
+  }
 }
-function pauseAudio() {
-  var x = document.getElementById("myAudio");
-  x.pause();
-}
+
 var questions = [
   [
-    '¿Quién compuso esta BSO? <audio id= "myAudio" src="./MoviesClips/Batman89-theme.flac" controls></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
+    '¿Quién compuso esta BSO? <audio id= "myAudio" src="./MoviesClips/Batman89-theme.flac"></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
     "Hans Zimmer",
     "John Williams",
     "Danny Elfman",
     "C"
   ],
   [
-    '¿A qué película pertenece esta BSO? <audio id= "myAudio" src="./MoviesClips/BackToTheFuture-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
+    '¿A qué película pertenece esta BSO? <audio id= "myAudio" src="./MoviesClips/BackToTheFuture-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
     "Indiana Jones",
     "Back To The Future",
     "Jurassic Park",
@@ -33,20 +50,20 @@ var questions = [
   ],
   [
     "¿Qué BSO no pertenece a Basil Poledouris?",
-    '<audio  id= "myAudio" src="./MoviesClips/TotalRecall-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
-    '<audio id= "myAudio" src="./MoviesClips/Conan-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
-    '<audio id= "myAudio" src="./MoviesClips/Robocop-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
+    '<audio  id= "myAudio" src="./MoviesClips/TotalRecall-theme.flac" controls></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
+    '<audio id= "myAudio" src="./MoviesClips/Conan-theme.flac" controls></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
+    '<audio id= "myAudio" src="./MoviesClips/Robocop-theme.flac"controls></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
     "A"
   ],
   [
-    '¿De qué película es esta BSO? <audio id= "myAudio" src="./MoviesClips/RequiemForADream-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
+    '¿De qué película es esta BSO? <audio id= "myAudio" hidden src="./MoviesClips/RequiemForADream-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
     "The Fountain",
     "Memento",
     "Requiem for a Dream",
     "C"
   ],
   [
-    '¿A quién pertenece esta BSO de Superman? <audio id= "myAudio" src="./MoviesClips/Superman10-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
+    '¿A quién pertenece esta BSO de Superman? <audio id= "myAudio" hidden src="./MoviesClips/Superman10-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
     "Hans Zimmer",
     "John Williams",
     "Alan Silvestri",
@@ -54,20 +71,20 @@ var questions = [
   ],
   [
     "¿Qué BSO no pertenece a Hans Zimmer?",
-    '<audio id= "myAudio" src="./MoviesClips/PiratesOfCaribbean-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
-    '<audio id= "myAudio" src="./MoviesClips/TheRock-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
-    '<audio id= "myAudio" src="./MoviesClips/Terminator-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
+    '<audio id= "myAudio" hidden src="./MoviesClips/PiratesOfCaribbean-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
+    '<audio id= "myAudio" hidden src="./MoviesClips/TheRock-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
+    '<audio id= "myAudio" hidden src="./MoviesClips/Terminator-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
     "C"
   ],
   [
-    '¿Quién es el compositor de esta BSO? <audio id= "myAudio" src="./MoviesClips/ThePinkPanther-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
+    '¿Quién es el compositor de esta BSO? <audio id= "myAudio" hidden src="./MoviesClips/ThePinkPanther-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
     "Henry Mancini",
     "Nino Rota",
     "Ennio Morricone",
     "A"
   ],
   [
-    '¿A qué película pertenece esta BSO? <audio id= "myAudio" src="./MoviesClips/KillBill-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
+    '¿A qué película pertenece esta BSO? <audio id= "myAudio" hidden src="./MoviesClips/KillBill-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
     "Reservoir Dogs",
     "Pull Fiction",
     "Kill Bill",
@@ -75,17 +92,33 @@ var questions = [
   ],
   [
     "¿Qué BSO no pertenece a Ennio Morricone?",
-    '<audio id= "myAudio" src="./MoviesClips/TheGodfather-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
-    '<audio id= "myAudio" src="./MoviesClips/TheMission-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
-    '<audio id= "myAudio" src="./MoviesClips/TheUntouchables-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
+    '<audio id= "myAudio" hidden src="./MoviesClips/TheGodfather-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
+    '<audio id= "myAudio" hidden src="./MoviesClips/TheMission-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
+    '<audio id= "myAudio" hidden src="./MoviesClips/TheUntouchables-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
     "A"
   ],
   [
     "¿Qué BSO pertenece a Star Wars?",
-    '<audio id= "myAudio" src="./MoviesClips/ET-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
-    '<audio id= "myAudio" src="./MoviesClips/Superman70-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
-    '<audio id= "myAudio" src="./MoviesClips/StarWars-theme.flac" controls></audio></audio><button onclick= "playAudio()" type= "button" >PLAY</button><button onclick="pauseAudio()" type="button">PAUSE</button>',
+    '<audio id= "myAudio" hidden src="./MoviesClips/ET-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
+    '<audio id= "myAudio" hidden src="./MoviesClips/Superman70-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
+    '<audio id= "myAudio" hidden src="./MoviesClips/StarWars-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
     "C"
+  ]
+];
+
+var finalQuestion = [
+  [
+    "Ronda Final: Ordena esta BSO arrastrando en su casilla correcta",
+    '<audio id= "myAudio" hidden src="./MoviesClips/ImperialMarch3-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
+    '<audio id= "myAudio" hidden src="./MoviesClips/ImperialMarch5-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
+    '<audio id= "myAudio" hidden src="./MoviesClips/ImperialMarch4-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
+    '<audio id= "myAudio" hidden src="./MoviesClips/ImperialMArch1-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
+    '<audio id= "myAudio" hidden src="./MoviesClips/ImperialMarch2-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay()">PLAY</button>',
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
   ]
 ];
 function _(x) {
@@ -100,12 +133,12 @@ function renderQuestion() {
       " de " +
       questions.length +
       " respuestas correctas</h2>";
-    _("quiz_status").innerHTML = "¡¡¡Quiz Completado!!!";
+    _("quizStatus").innerHTML = "¡¡¡Quiz Completado!!!";
     pos = 0;
     correct = 0;
     return false;
   }
-  _("quiz_status").innerHTML =
+  _("quizStatus").innerHTML =
     "Pregunta " + (pos + 1) + " de " + questions.length;
   question = questions[pos][0];
   chA = questions[pos][1];
