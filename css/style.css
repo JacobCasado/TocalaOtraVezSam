@@ -2,3 +2,7 @@ div#quiz{
   border: #000000 2px solid;
   padding: 10px 40px 40px 40px;
 }
+
+audio {
+  display: none;
+}
