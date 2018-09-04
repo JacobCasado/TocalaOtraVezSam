@@ -1,16 +1,3 @@
-var pos = 0,
-  quiz,
-  quizStatus,
-  question,
-  choice,
-  choices,
-  chA,
-  chB,
-  chC,
-  chD,
-  chE,
-  correct = 0;
-
 var isPlaying = false;
 function togglePlay(event) {
   var myAudio = document.getElementById(event.target.id + "Audio");
@@ -27,6 +14,31 @@ function togglePlay(event) {
   }
 }
 
+function checkAnswer() {
+  choices = document.getElementsByName("choices");
+  for (var i = 0; i < choices.length; i++) {
+    if (choices[i].checked) {
+      choice = choices[i].value;
+    }
+  }
+  if (choice == questions[pos][4]) {
+    correct++;
+  }
+  pos++;
+  renderQuestion();
+}
+var pos = 0,
+  quiz,
+  quizStatus,
+  question,
+  choice,
+  choices,
+  chA,
+  chB,
+  chC,
+  chD,
+  chE,
+  correct = 0;
 var questions = [
   [
     '¿Quién compuso esta BSO? <audio id= "playAudioAudio" src="./MoviesClips/Batman89-theme.flac"></audio><button id= "playAudio" onclick="togglePlay(event)">PLAY</button>',
@@ -43,11 +55,11 @@ var questions = [
     "B"
   ],
   [
-    "¿Qué BSO no pertenece a Basil Poledouris?",
-    '<audio id= "myAudio1Audio" src="./MoviesClips/TotalRecall-theme.flac" controls></audio></audio><button id= "myAudio1" onclick="togglePlay(event)">PLAY</button>',
-    '<audio id= "myAudio2Audio" src="./MoviesClips/Conan-theme.flac" controls></audio></audio><button id= "myAudio2" onclick="togglePlay(event)">PLAY</button>',
-    '<audio id= "myAudio3Audio" src="./MoviesClips/Robocop-theme.flac"controls></audio></audio><button id= "myAudio3" onclick="togglePlay(event)">PLAY</button>',
-    "A"
+    "¿Qué BSO pertenece a Star Wars?",
+    '<audio id= "myAudio10Audio" src="./MoviesClips/ET-theme.flac"></audio></audio><button id= "myAudio10" onclick="togglePlay(event)">PLAY</button>',
+    '<audio id= "myAudio11Audio" src="./MoviesClips/Superman70-theme.flac"></audio></audio><button id= "myAudio11" onclick="togglePlay(event)">PLAY</button>',
+    '<audio id= "myAudio12Audio" src="./MoviesClips/StarWars-theme.flac"></audio></audio><button id= "myAudio12" onclick="togglePlay(event)">PLAY</button>',
+    "C"
   ],
   [
     '¿De qué película es esta BSO? <audio id= "playAudioAudio" src="./MoviesClips/RequiemForADream-theme.flac"></audio></audio><button id= "playAudio" onclick="togglePlay(event)">PLAY</button>',
@@ -92,11 +104,11 @@ var questions = [
     "A"
   ],
   [
-    "¿Qué BSO pertenece a Star Wars?",
-    '<audio id= "myAudio10Audio" src="./MoviesClips/ET-theme.flac"></audio></audio><button id= "myAudio10" onclick="togglePlay(event)">PLAY</button>',
-    '<audio id= "myAudio11Audio" src="./MoviesClips/Superman70-theme.flac"></audio></audio><button id= "myAudio11" onclick="togglePlay(event)">PLAY</button>',
-    '<audio id= "myAudio12Audio" src="./MoviesClips/StarWars-theme.flac"></audio></audio><button id= "myAudio12" onclick="togglePlay(event)">PLAY</button>',
-    "C"
+    "¿Qué BSO no pertenece a Basil Poledouris?",
+    '<audio id= "myAudio1Audio" src="./MoviesClips/TotalRecall-theme.flac" controls></audio></audio><button id= "myAudio1" onclick="togglePlay(event)">PLAY</button>',
+    '<audio id= "myAudio2Audio" src="./MoviesClips/Conan-theme.flac" controls></audio></audio><button id= "myAudio2" onclick="togglePlay(event)">PLAY</button>',
+    '<audio id= "myAudio3Audio" src="./MoviesClips/Robocop-theme.flac"controls></audio></audio><button id= "myAudio3" onclick="togglePlay(event)">PLAY</button>',
+    "A"
   ]
 ];
 
@@ -147,17 +159,10 @@ function renderQuestion() {
     "<input type= 'radio' name = 'choices' value = 'C'> " + chC + "<br>";
   quiz.innerHTML += "<button onclick = 'checkAnswer()'>Comprueba</button>";
 }
-function checkAnswer() {
-  choices = document.getElementsByName("choices");
-  for (var i = 0; i < choices.length; i++) {
-    if (choices[i].checked) {
-      choice = choices[i].value;
-    }
-  }
-  if (choice == questions[pos][4]) {
-    correct++;
-  }
-  pos++;
-  renderQuestion();
-}
-window.addEventListener("load", renderQuestion, false);
+window.onload = function() {
+  document.getElementById("start-button").onclick = function() {
+    renderQuestion();
+  };
+
+  window.addEventListener("load", renderQuestion, false);
+};
