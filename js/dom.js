@@ -1,6 +1,8 @@
-var chronometre = new Chronometre;
+var chronometre = new Chronometre();
+
 function renderQuestion() {
-  var sum = parseInt(correct)/parseInt(chronometre.counterSec)*100;
+  
+  var sum = (parseInt(correct) / parseInt(chronometre.counterSec)) * 100;
   quiz = document.getElementById("quiz");
   if (pos >= questions.length) {
     quiz.innerHTML =
@@ -8,7 +10,10 @@ function renderQuestion() {
       correct +
       " de " +
       questions.length +
-      " respuestas correctas"+ "tus puntuación es "+sum+"</h2>";
+      " respuestas correctas" +
+      "tus puntuación es " +
+      sum +
+      "</h2>";
     document.getElementById("quizStatus").innerHTML = "¡¡¡Quiz Completado!!!";
     /* pos = 0;
     correct = 0; */
@@ -78,4 +83,21 @@ function renderQuestion() {
   // chD = finalQuestion[pos][4];
   // chE = finalQuestion[pos][5];
   // quiz.innerHTML +=
+  document.addEventListener("DOMContentLoaded", () => {
+    let elements = [];
+    let container = document.querySelector("#container");
+    // Add each row to the array
+    container.querySelectorAll(".row").forEach(el => elements.push(el));
+    // Clear the container
+    container.innerHTML = "";
+    // Sort the array from highest to lowest
+    elements.sort(
+      (a, b) =>
+        b.querySelector(".score").textContent -
+        a.querySelector(".score").textContent
+    );
+    // Put the elements back into the container
+    elements.forEach(e => container.appendChild(e));
+  });
 }
+var person = prompt("Por favor escribe tu nombre", "Cataracker de las BSO's");
