@@ -16,20 +16,57 @@ function renderQuestion() {
     } */
     return false;
   }
-  document.getElementById("quizStatus").innerHTML =
-    "Pregunta " + (pos + 1) + " de " + questions.length;
-  question = questions[pos].pregunta;
-  chA = questions[pos].opcionA;
-  chB = questions[pos].opcionB;
-  chC = questions[pos].opcionC;
-  quiz.innerHTML = "<h3>" + question + "</h3>";
-  quiz.innerHTML +=
-    "<input type= 'radio' name = 'choices' value = 'A'> " + chA + "<br>";
-  quiz.innerHTML +=
-    "<input type= 'radio' name = 'choices' value = 'B'> " + chB + "<br>";
-  quiz.innerHTML +=
-    "<input type= 'radio' name = 'choices' value = 'C'> " + chC + "<br>";
-  quiz.innerHTML += "<button onclick = 'checkAnswer()'>Siguiente</button>";
+
+  if ("text" == questions[pos].type) {
+    document.getElementById("quizStatus").innerHTML =
+      "Pregunta " + (pos + 1) + " de " + questions.length;
+    question = questions[pos].pregunta;
+    musicQues = questions[pos].musicQuestion;
+    chA = questions[pos].opcionA;
+    chB = questions[pos].opcionB;
+    chC = questions[pos].opcionC;
+    quiz.innerHTML =
+      "<h3>" +
+      question +
+      "</h3>" +
+      "<audio controls id= 'playAudioAudio' src= " +
+      musicQues +
+      ">";
+    quiz.innerHTML +=
+      "<input type= 'radio' name = 'choices' value = 'A'> " + chA + "<br>";
+    quiz.innerHTML +=
+      "<input type= 'radio' name = 'choices' value = 'B'> " + chB + "<br>";
+    quiz.innerHTML +=
+      "<input type= 'radio' name = 'choices' value = 'C'> " + chC + "<br>";
+    quiz.innerHTML += "<button onclick = 'checkAnswer()'>Siguiente</button>";
+  } else {
+    document.getElementById("quizStatus").innerHTML =
+      "Pregunta " + (pos + 1) + " de " + questions.length;
+    question = questions[pos].pregunta;
+    chA = questions[pos].opcionA;
+    chB = questions[pos].opcionB;
+    chC = questions[pos].opcionC;
+    quiz.innerHTML = "<h3>" + question + "</h3>";
+    quiz.innerHTML +=
+      "<input type= 'radio' name = 'choices' value = 'A'> " +
+      "<audio controls id= 'playAudioAudio' src= " +
+      chA +
+      ">" +
+      "<br>";
+    quiz.innerHTML +=
+      "<input type= 'radio' name = 'choices' value = 'B'> " +
+      "<audio controls id= 'playAudioAudio' src= " +
+      chB +
+      ">" +
+      "<br>";
+    quiz.innerHTML +=
+      "<input type= 'radio' name = 'choices' value = 'C'> " +
+      "<audio controls id= 'playAudioAudio' src= " +
+      chC +
+      ">" +
+      "<br>";
+    quiz.innerHTML += "<button onclick = 'checkAnswer()'>Siguiente</button>";
+  }
 
   // _("quizStatus").innerHTML = "¡¡¡Bonus!!!";
   // question = finalQuestion[pos][0];

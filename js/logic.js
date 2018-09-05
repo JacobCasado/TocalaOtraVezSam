@@ -1,25 +1,12 @@
-var isPlaying = false;
-function togglePlay(event) {
-  var myAudio = document.getElementById(event.target.id + "Audio");
-  console.log(myAudio);
 
-  if (isPlaying) {
-    myAudio.pause();
-    isPlaying = false;
-    document.getElementById(event.target.id).innerHTML = "PLAY";
-  } else {
-    myAudio.play();
-    isPlaying = true;
-    document.getElementById(event.target.id).innerHTML = "PAUSE";
-  }
-}
-
+//Lógica aciertos//
 var pos = 0,
   quiz,
   quizStatus,
   question,
   choice,
   choices,
+  musicQues,
   chA,
   chB,
   chC,
@@ -28,7 +15,6 @@ var pos = 0,
   correct = 0;
 
 function checkAnswer() {
-  console.log("entra");
   choices = document.getElementsByName("choices");
   for (var i = 0; i < choices.length; i++) {
     if (choices[i].checked) {
@@ -41,3 +27,10 @@ function checkAnswer() {
   pos++;
   renderQuestion();
 }
+//variable audio//
+var sound = document.createElement("audio");
+      sound.id = "playAudioAudio";
+      sound.controls = "controls";
+      sound.src = "";
+      sound.type = "audio/flac";
+      document.getElementById("quiz").appendChild(sound);
