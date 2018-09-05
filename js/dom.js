@@ -1,4 +1,6 @@
+var chronometre = new Chronometre;
 function renderQuestion() {
+  var sum = parseInt(correct)/parseInt(chronometre.counterSec)*100;
   quiz = document.getElementById("quiz");
   if (pos >= questions.length) {
     quiz.innerHTML =
@@ -6,7 +8,7 @@ function renderQuestion() {
       correct +
       " de " +
       questions.length +
-      " respuestas correctas</h2>";
+      " respuestas correctas"+ "tus puntuación es "+sum+"</h2>";
     document.getElementById("quizStatus").innerHTML = "¡¡¡Quiz Completado!!!";
     /* pos = 0;
     correct = 0; */
