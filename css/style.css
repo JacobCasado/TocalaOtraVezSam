@@ -2,10 +2,12 @@ body {
   margin: 0;
   padding: 0;
 }
+
 @font-face {
   font-family: "Theatre";
   src: url(../Fonts/StandingRoomOnlyNF.ttf);
 }
+
 .game-intro {
   background-image: url("../Img/animated-theater-marquee_rrhhhogo__F0000.png");
   background-size: cover;
@@ -15,6 +17,7 @@ body {
   background-position: center;
   text-align: center;
 }
+
 .game-intro h1 {
   font-family: "Theatre";
   position: relative;
@@ -39,8 +42,9 @@ body {
   margin-left: 43%;
   padding-top: 8px;
   outline: none;
-  transition: .3s all;
+  transition: 0.3s all;
 }
+
 .game-intro .start:hover {
   font-size: 48px;
 }
@@ -79,51 +83,77 @@ h3 {
   margin-top: 0;
 }
 
-.quiz {
-  border: #000000 2px solid;
-  padding: 10px 40px 40px 40px;
-}
-
 #quiz {
+  font-family: "Theatre";
   font-size: 20px;
-  color: white;
+  color: rgb(235, 233, 233);
   text-transform: uppercase;
 }
 
-/* #container {
-  width: 600px;
-  height: auto;
+.names {
+  margin-top: 24px;
 }
 
-.row {
-  position: relative;
+.btn-quiz1 {
   display: block;
-  width: 100%;
-  height: 40px;
-  border-bottom: 1px solid #afafaf;
+  color: rgb(235, 233, 233);
+  margin: 0 auto;
+  margin-top: 65px;
+  font-family: "Theatre";
+  font-size: 25px;
+  background: none;
+  border: 0;
+  color: inherit;
+  outline: none;
+  transition: 0.3s all;
 }
 
-.name {
-  position: relative;
-  display: inline-block;
-  width: 75%;
-  line-height: 45px;
+.btn-quiz1:hover {
+  font-size: 30px;
 }
 
-.score {
-  position: relative;
-  display: inline-block;
-  width: 25%;
+.btn-quiz2 {
+  display: block;
+  color: rgb(235, 233, 233);
+  margin: 0 auto;
+  margin-top: 298px;
+  font-family: "Theatre";
+  font-size: 25px;
+  background: none;
+  border: 0;
+  color: inherit;
+  outline: none;
+  transition: 0.3s all;
 }
 
-.row:nth-child(1) {
-  background: gold;
+.btn-quiz2:hover {
+  font-size: 30px;
+}
+#record table {
+  margin: 0 auto;
+  border: none;
 }
 
-.row:nth-child(2) {
-  background: #c0c0c0;
+#record td {
+  color: rgb(235, 233, 233);
+  border: none;
+  padding: 25px;
+  font-family: "Theatre";
+  font-size: 20px;
 }
 
-.row:nth-child(3) {
-  background: #cd7f32;
-} */
+.in {
+  margin-right: 14px;
+  font-size: 20px;
+}
+
+.audio {    
+  width: 33%;
+  float: left;
+}
+
+.audio input {
+  display: block;
+  margin: 14px auto 0 auto;
+  font-size: 20px;
+}
