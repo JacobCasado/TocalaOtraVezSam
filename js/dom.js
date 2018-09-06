@@ -45,7 +45,7 @@ function renderQuestion() {
       musicQues +
       ">";
     quiz.innerHTML +=
-      "<input type= 'radio' name = 'choices' value = 'A'> " + chA + "<br>";
+      "<div><input type= 'radio' name = 'choices' value = 'A'>" + chA + "</div>";
     quiz.innerHTML +=
       "<input type= 'radio' name = 'choices' value = 'B'> " + chB + "<br>";
     quiz.innerHTML +=

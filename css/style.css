@@ -12,6 +12,8 @@ body {
   background-repeat: no-repeat;
   background-color: #000000;
   height: 100vh;
+  background-position: center;
+  text-align: center;
 }
 .game-intro h1 {
   font-family: "Theatre";
@@ -22,6 +24,7 @@ body {
   padding-top: 305px;
   padding-left: 12px;
   font-size: 85px;
+  margin-top: 0;
 }
 
 .game-intro .start {
@@ -33,8 +36,13 @@ body {
   position: 50%;
   text-align: -webkit-center;
   font-size: 45px;
-  padding-left: 43%;
-  padding-top: 12px;
+  margin-left: 43%;
+  padding-top: 8px;
+  outline: none;
+  transition: .3s all;
+}
+.game-intro .start:hover {
+  font-size: 48px;
 }
 
 .game {
@@ -43,11 +51,43 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+  background-position: center;
+  text-align: center;
+}
+
+h2 {
+  font-family: "Theatre";
+  position: relative;
+  color: rgb(235, 233, 233);
+  position: 50%;
+  text-align: -webkit-center;
+  padding-top: 118px;
+  padding-left: 12px;
+  font-size: 35px;
+  margin-top: 0;
+}
+
+h3 {
+  font-family: "Theatre";
+  position: relative;
+  color: rgb(235, 233, 233);
+  position: 50%;
+  text-align: -webkit-center;
+  padding-top: 118px;
+  padding-left: 12px;
+  font-size: 24px;
+  margin-top: 0;
 }
 
 .quiz {
   border: #000000 2px solid;
   padding: 10px 40px 40px 40px;
+}
+
+#quiz {
+  font-size: 20px;
+  color: white;
+  text-transform: uppercase;
 }
 
 /* #container {
