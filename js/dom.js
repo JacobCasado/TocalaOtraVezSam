@@ -9,10 +9,9 @@ function renderQuestion() {
       correct +
       " de " +
       questions.length +
-      " respuestas correctas" +
-      "tus puntuación es " +
-      sum +
-      "</h2>";
+      " respuestas correctas." + "<br>" + "<br>" +
+      "Tu puntuación es de " +
+      sum + " puntos.</h2>";
     document.getElementById("quizStatus").innerHTML = "¡¡¡Quiz Completado!!!";
     var person = prompt(
       "Por favor escribe tu nombre",
