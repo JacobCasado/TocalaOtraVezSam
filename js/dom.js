@@ -20,12 +20,7 @@ function renderQuestion() {
 
     clasification.saveRecord(person, sum);
     clasification.render();
-    /* pos = 0;
-    correct = 0; */
-    /* if (correct >= 5) {
-      console.log("mas de 5");
-      return (_("quiz").innerHTML = "<button id= 'bonus'>BONUS</button>");
-    } */
+    
     return false;
   }
 
@@ -76,12 +71,4 @@ function renderQuestion() {
     quiz.innerHTML += "<button class= 'btn-quiz2' onclick = 'checkAnswer()'>Siguiente >></button>";
   }
 
-  // _("quizStatus").innerHTML = "¡¡¡Bonus!!!";
-  // question = finalQuestion[pos][0];
-  // chA = finalQuestion[pos][1];
-  // chB = finalQuestion[pos][2];
-  // chC = finalQuestion[pos][3];
-  // chD = finalQuestion[pos][4];
-  // chE = finalQuestion[pos][5];
-  // quiz.innerHTML +=
 }

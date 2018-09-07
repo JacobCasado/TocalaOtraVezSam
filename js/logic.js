@@ -36,5 +36,4 @@ sound.src = "";
 sound.type = "audio/flac";
 document.getElementById("quiz").appendChild(sound);
 
-//Clasificacion//
 
